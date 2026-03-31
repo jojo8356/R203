@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/home/pj509414/Documents/Qualité Dev/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+1506130806.index
+2198425331.index

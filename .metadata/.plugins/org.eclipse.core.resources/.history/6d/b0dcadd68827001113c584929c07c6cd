@@ -1,0 +1,91 @@
+package ex1;
+
+public class DynamicSortableTable {
+	int table[];
+	
+    public DynamicSortableTable(int argTable[]){
+    	table = argTable;
+    }
+
+    public void insertionSort() {
+        int lengthTable = table.length;
+
+        for (int i = 1; i < lengthTable; i++) {
+            int index = table[i];
+            int j = i-1;
+
+            while(j >= 0 && table[j] > index) {
+                table[j+1] = table[j];
+                j--;
+            }
+            table[j+1] = index;
+        }
+    }
+
+    public void concat(int dest[]){
+    	if (dest == null || dest.length == 0)
+    		return;
+        int[] result = new int[table.length+dest.length];
+        System.arraycopy(table,0, result, 0, table.length);
+
+        for(int i=0; i < dest.length; i++){
+            result[table.length + i] = dest[i];
+        }
+        
+        table = result;
+    }
+    
+    public String toString() {
+    	String res = "";
+    	for (int i = 0; i < table.length; i++) {
+    		res += String.valueOf(table[i]);
+    		if (i+1 < table.length)
+    			res += " ";
+    	}
+    	return res;
+    }
+
+    public void print(){
+    	System.out.println(this);
+    }
+    
+    public int popAtIndex(int goal) {
+    	if (goal < 0 || goal > table.length - 1)
+    		throw new ArrayIndexOutOfBoundsException("L'indice doit être entre 0 et "+(table.length - 1));
+    	int deletedItem = table[goal];
+    	int result[] = new int[table.length - 1];
+    	for (int i = 0; i < table.length; i++) {
+    		if (i != goal) {
+    			if (i < goal)
+    				result[i] = table[i];
+    			else
+    				result[i-1] = table[i];
+    		}
+    	}
+    	table = result;
+    	return deletedItem;
+    }
+
+    public static void main(String[] args)
+    {
+    	// simple table sort
+    	int[] table = {3, 5, 6, 4};
+    	DynamicSortableTable processTable = new DynamicSortableTable(table);
+    	processTable.print();
+		processTable.insertionSort();
+		processTable.print();
+		
+		// merge table sort
+		int[] table2 = {5, 2, 8, 4, 9};
+		processTable.concat(table2);
+    	processTable.print();
+		processTable.insertionSort();
+		processTable.print();
+		
+		// pop index
+		int remove = processTable.popAtIndex(2);
+		processTable.print();
+		System.out.println(remove);
+		int remove2 = processTable.popAtIndex(8);
+    }
+}

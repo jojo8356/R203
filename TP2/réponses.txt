@@ -1,0 +1,38 @@
+===== TP2 - Gestion de versions - Séance 2 =====
+
+=== 1. Mise en place du dépôt distant ===
+Création du projet TestQdev sur GitLab (iut-git.unice.fr), projet blank avec README.md.
+
+=== 2. Mise en place du dépôt local ===
+1. Placement dans le répertoire souhaité.
+2. Configuration des identifiants git (git config --global user.name / user.email).
+3. git clone <url_du_depot> -> récupération du dépôt distant en local.
+4. Le clone a créé un nouveau répertoire "testqdev" contenant le README.md et le dossier .git.
+5. git status -> affiche "On branch main", "nothing to commit, working tree clean".
+
+=== 3. Synchronization du dépôt distant ===
+1. Création du fichier .gitignore avec le contenu fourni.
+2. git add .gitignore
+3. git commit -m "Premiere version du gitignore" .gitignore
+4. git status -> "Your branch is ahead of 'origin/main' by 1 commit" (le commit est en local mais pas encore poussé).
+5. git log -> affiche l'historique des commits (le nouveau + l'initial). Différence avec git status : git log montre l'historique complet, git status montre l'état actuel du répertoire de travail.
+6. Le .gitignore n'est PAS encore sur GitLab (pas encore poussé).
+7. git push -> pousse les modifications vers le dépôt distant.
+8. git status -> "Your branch is up to date with 'origin/main'", "nothing to commit".
+9. Le .gitignore est maintenant visible sur GitLab.
+
+=== 4. Synchronization (à vous de jouer !) ===
+1. Ajout de ProcessTable.java dans le dépôt GitLab :
+   git add ProcessTable.java
+   git commit -m "add ProcessTable.java"
+   git push
+2. Modification du fichier + dépôt :
+   git add ProcessTable.java
+   git commit -m "update ProcessTable.java"
+   git push
+3. Liste des commits visible sur GitLab.
+4. Suppression de ProcessTable.java du dépôt git :
+   git rm ProcessTable.java
+   git commit -m "remove ProcessTable.java"
+   git push
+5. Liste des commits mise à jour sur GitLab.

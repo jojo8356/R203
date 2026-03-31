@@ -1,0 +1,2 @@
+ex 2: il trie les éléments d'un tableau
+ex 3: 

@@ -1,0 +1,58 @@
+===== TP3 - Gestion de versions - Séance 3 =====
+
+=== 1. Retour sur les bases ===
+
+-- Commandes de base --
+1. Création d'un fichier à son nom : touch johan.polsinelli
+2. git add johan.polsinelli
+3. git commit -m "add johan.polsinelli" && git push
+
+-- Complément add vs commit --
+- git add : indexe les changements (staging area)
+- git commit : enregistre une révision dans l'historique local
+
+-- git diff --
+1. Modification du fichier créé.
+2. git diff -> montre les différences entre le working directory et la staging area.
+3. git add + git commit pour enregistrer.
+4. git diff : différences entre working directory et staging area (fichiers non stagés).
+   git diff --cached : différences entre staging area et le dernier commit (fichiers stagés).
+
+-- Suppression --
+1. git rm johan.polsinelli && git commit -m "remove file"
+
+=== 2. Designer un commit ===
+- git show <hash> : affiche les changements d'une révision par rapport à son parent.
+- git show HEAD : affiche les changements du dernier commit.
+- git show <commit>^ : affiche le commit parent.
+- git show <commit>^^ : grand-parent du commit.
+- git show <commit>~4 : arrière-arrière-grand-parent (4 générations).
+- git show <commit>^1 : 1er parent (utile lors d'un merge).
+- git show <commit>^2 : 2ème parent (lors d'un merge).
+
+=== 3. Revenir en arrière et restaurer un fichier ===
+
+-- Revenir en arrière --
+1. Repérer l'id du commit précédant la suppression du fichier (via git log).
+2. git checkout <id_commit> -> déplace HEAD vers cette révision (detached HEAD).
+3. git log -> l'historique s'arrête au commit sélectionné (les commits postérieurs ne sont plus visibles).
+4. git checkout main -> retour en tête de l'historique.
+
+-- Restaurer un fichier --
+1. git checkout permet de récupérer un état particulier d'un fichier.
+2. Modifier un fichier, git add, git commit, git push.
+3. Retrouver l'identifiant du commit avant modification (git log).
+4. git checkout <id_commit> <votre_fichier> -> restaure le fichier dans son état ancien.
+5. git commit -m "restore file" -> enregistrer la restauration.
+
+=== 4. Mettre un travail de côté (git stash) ===
+git stash sauvegarde temporairement les changements (stagés et non stagés sur fichiers trackés).
+Ne stashe PAS : les nouveaux fichiers non stagés, les fichiers ignorés.
+
+-- Exercice --
+1. Modifier le .gitignore.
+2. git diff -> montre les modifications.
+3. git stash -> met les modifications de côté.
+4. Le .gitignore revient à son état précédent (modifications disparues).
+5. git stash show -> affiche un résumé de ce qui a été stashé.
+6. git stash pop -> réintègre les changements mis de côté.

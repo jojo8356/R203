@@ -1,0 +1,24 @@
+===== TP1 - Clean Code =====
+
+--- Exercice 1 ---
+Importation du fichier ProcessTable.java dans l'éditeur : OK
+
+--- Exercice 2 ---
+Le code trie les éléments d'un tableau par insertion (insertionSort), permet de concaténer deux tableaux (concat), d'afficher le tableau (print) et de supprimer un élément à un indice donné (removeAt).
+
+--- Exercice 3 ---
+Renommage du fichier et de la classe ProcessTable en DynamicSortableTable (nom plus descriptif qui indique qu'il s'agit d'un tableau dynamique et triable).
+
+--- Exercice 4 ---
+Renommage des variables et méthodes pour améliorer la lisibilité :
+- table[] reste explicite
+- argTable pour le paramètre du constructeur
+- insertionSort() : nom clair
+- concat() : nom clair
+- removeAt(int goal) : "goal" renommable en "index" pour plus de clarté
+
+--- Exercice 5 ---
+Refactoring DRY : au lieu de passer le tableau en argument de chaque méthode et de modifier un tableau externe, on utilise un attribut interne (table) initialisé via le constructeur. Chaque méthode opère sur cet attribut. Le constructeur vide n'a pas de sens ici car il faut un tableau initial.
+
+--- Exercice 6 ---
+Méthode removeAt ajoutée : prend un indice en entrée, retourne l'élément supprimé, et produit un nouveau tableau de taille N-1 sans case vide.

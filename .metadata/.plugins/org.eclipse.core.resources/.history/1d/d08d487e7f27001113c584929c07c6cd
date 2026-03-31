@@ -1,0 +1,46 @@
+package ex1;
+
+public class SortTable {
+
+    public SortTable(){}
+
+    public void someReordering(int table[]) {
+        int lengthTable = table.length;
+
+        for (int i = 1; i < lengthTable; i++) {
+            int index = table[i];
+            int j = i-1;
+
+            while(j >= 0 && table[j] > index) {
+                table[j+1] = table[j];
+                j--;
+            }
+            table[j+1] = index;
+        }
+    }
+
+    public int[] add(int[] src, int dest[]){
+        int[] result = new int[src.length+dest.length];
+        System.arraycopy(src,0, result, 0, src.length);
+
+        for(int i=0; i < dest.length; i++){
+            result[src.length + i] = dest[i];
+        }
+        return result;
+    }
+
+    public void watch(int[] T){
+        for(int i=0; i < T.length; i++) {
+            System.out.print(T[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args)
+    {
+    	int[] table = {3, 5, 6, 4};
+    	SortTable processTable = new SortTable();
+		processTable.someReordering(table);
+		processTable.watch(table);
+    }
+}
